@@ -1,0 +1,9 @@
+
+# Start mosquitto server
+mosquitto -v -p 1753
+
+# Subscribe
+mosquitto_sub -h localhost -p 1753 -t "topico"
+
+# Publisher
+mosquitto_pub -h localhost -p 1753 -t "topico" -m "mensagem"
