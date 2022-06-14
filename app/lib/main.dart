@@ -32,11 +32,14 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   late MqttServerClient client;
-  String clientStatus = 'INITIAL STATE';
+  String clientStatus = 'Disconnected';
 
   void connect() async {
-    client = MqttServerClient('10.0.2.2', '');
-    client.port = 1753;
+    // client = MqttServerClient('10.0.2.2', '');
+    // client.port = 1753;
+    client = MqttServerClient('test.mosquitto.org', '');
+    client.port = 1883;
+
     client.setProtocolV311();
     client.logging(on: false);
     client.keepAlivePeriod = 20;
@@ -187,7 +190,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 onTap: () {
-                  clientStatus = 'Disconnected';
+                  clientStatus = 'Connected';
                   setState(() {});
                 },
               ),

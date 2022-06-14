@@ -7,3 +7,14 @@ mosquitto_sub -h localhost -p 1753 -t "topico"
 
 # Publisher
 mosquitto_pub -h localhost -p 1753 -t "topico" -m "mensagem"
+
+
+
+mosquitto_pub -h 192.168.0.100 -p 1883 -t "topico" -m 'mensagem tests'
+
+
+# REMOTE SERVER
+URL: test.mosquitto.org
+PORT: 1883
+mosquitto_sub -h test.mosquitto.org -p 1883 -t "topico"
+mosquitto_pub -h test.mosquitto.org -p 1883 -t "topico" -m "mensagem tests"
